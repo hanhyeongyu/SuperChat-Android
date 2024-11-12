@@ -50,6 +50,7 @@ dependencies {
     implementation(projects.core.datastore)
     implementation(projects.core.datastoreProto)
     implementation(projects.core.notification)
+    implementation(projects.core.socket)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
