@@ -1,9 +1,9 @@
 package com.example.superchat.core.datastore
-
 data class UserData(
-    val show_completed: Boolean,
+    val showCompleted: Boolean,
     val themeBrand: ThemeBrand,
-    val darkThemeConfig: DarkTheme
+    val darkTheme: DarkTheme,
+    val useDynamicColor: Boolean
 )
 
 enum class ThemeBrand {
@@ -16,3 +16,4 @@ enum class DarkTheme {
     LIGHT,
     DARK,
 }
+

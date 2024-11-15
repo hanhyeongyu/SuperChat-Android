@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.superchat.android.application.compose)
     alias(libs.plugins.superchat.android.application.firebase)
     alias(libs.plugins.superchat.android.application.flavors)
+    id("com.google.android.gms.oss-licenses-plugin")
 
     alias(libs.plugins.superchat.hilt)
     alias(libs.plugins.kotlin.serialization)
@@ -45,12 +46,14 @@ dependencies {
     implementation(projects.core.common)
     implementation(projects.core.log)
     implementation(projects.core.network)
-    implementation(projects.core.composeutils)
+    implementation(projects.core.ui)
     implementation(projects.core.database)
     implementation(projects.core.datastore)
     implementation(projects.core.datastoreProto)
+    implementation(projects.core.designsystem)
     implementation(projects.core.notification)
-    implementation(projects.core.socket)
+
+    implementation(projects.settings)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -61,9 +64,22 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material3.adaptive)
+//    implementation(libs.androidx.compose.material3.adaptive.layout)
+//    implementation(libs.androidx.compose.material3.adaptive.navigation)
+
+    implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.androidx.core.splashscreen)
+
 
     ksp(libs.hilt.compiler)
     kspTest(libs.hilt.compiler)
+
+
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.serialization.json)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

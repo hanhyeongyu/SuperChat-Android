@@ -75,6 +75,10 @@ gradlePlugin {
             id = "superchat.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidFeature") {
+            id = "superchat.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
         register("androidFlavors") {
             id = "superchat.android.application.flavors"
             implementationClass = "AndroidApplicationFlavorsConventionPlugin"

@@ -22,7 +22,7 @@ import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import com.example.superchat.core.datastore.UserPreferencesSerializer
 import com.example.superchat.core.network.Dispatcher
-import com.example.superchat.core.network.SuperChatDispatchers.IO
+import com.example.superchat.core.network.AppDispatchers.IO
 import com.example.superchat.core.network.di.ApplicationScope
 import dagger.Module
 import dagger.Provides

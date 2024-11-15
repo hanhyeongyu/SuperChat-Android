@@ -16,9 +16,9 @@
 
 package com.example.superchat.core.network.di
 
+import com.example.superchat.core.network.AppDispatchers.Default
+import com.example.superchat.core.network.AppDispatchers.IO
 import com.example.superchat.core.network.Dispatcher
-import com.example.superchat.core.network.SuperChatDispatchers.Default
-import com.example.superchat.core.network.SuperChatDispatchers.IO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

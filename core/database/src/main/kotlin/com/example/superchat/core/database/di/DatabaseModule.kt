@@ -2,7 +2,7 @@ package com.example.superchat.core.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.superchat.core.database.SuperChatDatabase
+import com.example.superchat.core.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +15,11 @@ import javax.inject.Singleton
 internal object DatabaseModule {
     @Provides
     @Singleton
-    fun providesNiaDatabase(
+    fun providesDatabase(
         @ApplicationContext context: Context,
-    ): SuperChatDatabase = Room.databaseBuilder(
+    ): AppDatabase = Room.databaseBuilder(
         context,
-        SuperChatDatabase::class.java,
+        AppDatabase::class.java,
         "superchat-database",
     ).build()
 }
