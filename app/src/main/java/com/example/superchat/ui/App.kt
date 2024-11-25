@@ -21,7 +21,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult.ActionPerformed
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
@@ -54,7 +53,7 @@ import com.example.superchat.core.designsystem.component.AppTopAppBar
 import com.example.superchat.core.designsystem.icon.AppIcons
 import com.example.superchat.core.designsystem.theme.GradientColors
 import com.example.superchat.core.designsystem.theme.LocalGradientColors
-import com.example.superchat.navigation.NiaNavHost
+import com.example.superchat.navigation.AppNavHost
 import com.example.superchat.navigation.TopLevelDestination
 import com.example.superchat.settings.SettingsDialog
 import timber.log.Timber
@@ -66,11 +65,13 @@ import com.example.superchat.settings.R as settingsR
 fun App(
     appState: AppState,
     modifier: Modifier = Modifier,
-    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
 ){
     val shouldShowGradientBackground =
         appState.currentTopLevelDestination == TopLevelDestination.FOR_YOU
     var showSettingsDialog by rememberSaveable { mutableStateOf(false) }
+
+
 
     AppBackground {
         AppGradientBackground(
@@ -95,6 +96,7 @@ fun App(
                 }
             }
 
+
             App(
                 appState,
                 snackbarHostState = snackbarHostState,
@@ -111,7 +113,6 @@ fun App(
 @OptIn(
     ExperimentalMaterial3Api::class,
     ExperimentalComposeUiApi::class,
-    ExperimentalMaterial3AdaptiveApi::class,
 )
 internal fun App(
     appState: AppState,
@@ -125,6 +126,8 @@ internal fun App(
     val unreadDestinations by appState.topLevelDestinationsWithUnreadResources
         .collectAsStateWithLifecycle()
     val currentDestination = appState.currentDestination
+
+
 
     if (showSettingsDialog) {
         SettingsDialog(
@@ -163,6 +166,7 @@ internal fun App(
         },
         windowAdaptiveInfo = windowAdaptiveInfo,
     ){
+
         Scaffold(
             modifier = modifier.semantics {
                 testTagsAsResourceId = true
@@ -217,7 +221,7 @@ internal fun App(
                         },
                     ),
                 ) {
-                    NiaNavHost(
+                    AppNavHost(
                         appState = appState,
                         onShowSnackbar = { message, action ->
                             snackbarHostState.showSnackbar(

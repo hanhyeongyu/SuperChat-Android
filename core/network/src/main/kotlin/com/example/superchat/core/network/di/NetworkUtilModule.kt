@@ -1,9 +1,9 @@
 package com.example.superchat.core.network.di
 
-import com.example.superchat.core.network.utils.ConnectivityManagerNetworkMonitor
-import com.example.superchat.core.network.utils.NetworkMonitor
-import com.example.superchat.core.network.utils.TimeZoneBroadcastMonitor
-import com.example.superchat.core.network.utils.TimeZoneMonitor
+import com.example.superchat.core.network.monitor.ConnectivityManagerNetworkMonitor
+import com.example.superchat.core.network.monitor.NetworkMonitor
+import com.example.superchat.core.network.monitor.TimeZoneBroadcastMonitor
+import com.example.superchat.core.network.monitor.TimeZoneMonitor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

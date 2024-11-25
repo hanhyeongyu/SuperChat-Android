@@ -11,8 +11,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
-import com.example.superchat.core.network.utils.NetworkMonitor
-import com.example.superchat.core.network.utils.TimeZoneMonitor
+import com.example.superchat.core.network.monitor.NetworkMonitor
+import com.example.superchat.core.network.monitor.TimeZoneMonitor
 import com.example.superchat.navigation.TopLevelDestination
 import com.example.superchat.navigation.TopLevelDestination.BOOKMARKS
 import com.example.superchat.navigation.TopLevelDestination.FOR_YOU

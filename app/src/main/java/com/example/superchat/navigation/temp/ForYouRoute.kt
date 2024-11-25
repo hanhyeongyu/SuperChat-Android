@@ -1,6 +1,5 @@
 package com.example.superchat.navigation.temp
 
-import androidx.compose.material3.Text
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
@@ -8,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navDeepLink
 import com.example.superchat.notification.DEEP_LINK_URI_PATTERN
+import com.example.superchat.profile.ProfileScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -67,7 +67,7 @@ fun NavGraphBuilder.forYouSection(
                 },
             ),
         ) {
-            Text("For You")
+            ProfileScreen()
         }
         topicDestination()
     }

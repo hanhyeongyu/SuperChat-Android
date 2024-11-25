@@ -3,8 +3,8 @@ package com.example.superchat.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.superchat.core.datastore.DarkTheme
-import com.example.superchat.core.datastore.PreferencesDataSource
 import com.example.superchat.core.datastore.ThemeBrand
+import com.example.superchat.core.datastore.UserPreferencesDataSource
 import com.example.superchat.settings.SettingsUiState.Loading
 import com.example.superchat.settings.SettingsUiState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +19,7 @@ import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class Theme @Inject constructor(
-    private val userPreferences: PreferencesDataSource
+    private val userPreferences: UserPreferencesDataSource
 ) : ViewModel() {
     val settingsUiState: StateFlow<SettingsUiState> =
         userPreferences.userData

@@ -6,7 +6,6 @@ import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.util.DebugLogger
 import com.example.superchat.core.network.BuildConfig
-
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,15 +29,15 @@ internal object NetworkModule {
 
     @Provides
     @Singleton
+    @Api
     fun okHttpCallFactory(): Call.Factory = trace("OkHttpClient") {
         OkHttpClient.Builder()
             .addInterceptor(
-                HttpLoggingInterceptor()
-                    .apply {
-                        if (BuildConfig.DEBUG) {
-                            setLevel(HttpLoggingInterceptor.Level.BODY)
-                        }
-                    },
+                HttpLoggingInterceptor().apply {
+                    if (BuildConfig.DEBUG) {
+                        setLevel(HttpLoggingInterceptor.Level.BODY)
+                    }
+                }
             )
             .build()
     }
@@ -55,7 +54,7 @@ internal object NetworkModule {
     @Singleton
     fun imageLoader(
         // We specifically request dagger.Lazy here, so that it's not instantiated from Dagger.
-        okHttpCallFactory: dagger.Lazy<Call.Factory>,
+        @Api okHttpCallFactory: dagger.Lazy<Call.Factory>,
         @ApplicationContext application: Context,
     ): ImageLoader = trace("SuperChatImageLoader") {
         ImageLoader.Builder(application)
@@ -71,6 +70,5 @@ internal object NetworkModule {
             }
             .build()
     }
-
 
 }

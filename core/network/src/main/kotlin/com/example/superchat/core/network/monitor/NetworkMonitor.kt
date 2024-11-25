@@ -1,4 +1,4 @@
-package com.example.superchat.core.network.utils
+package com.example.superchat.core.network.monitor
 
 import android.content.Context
 import android.net.ConnectivityManager

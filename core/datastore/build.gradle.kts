@@ -1,6 +1,8 @@
 plugins{
     alias(libs.plugins.superchat.android.library)
     alias(libs.plugins.superchat.hilt)
+    alias(libs.plugins.kotlin.serialization)
+
 }
 
 android{
@@ -16,4 +18,5 @@ dependencies{
     implementation(projects.core.datastoreProto)
 
     implementation(libs.androidx.dataStore)
+    implementation(libs.kotlinx.serialization.json)
 }

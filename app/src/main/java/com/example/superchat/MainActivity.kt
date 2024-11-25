@@ -20,13 +20,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.superchat.MainActivityUiState.Loading
 import com.example.superchat.MainActivityUiState.Success
+import com.example.superchat.auth.AuthScreen
 import com.example.superchat.core.datastore.DarkTheme
 import com.example.superchat.core.datastore.ThemeBrand
 import com.example.superchat.core.designsystem.theme.AppTheme
 import com.example.superchat.core.log.analytics.AnalyticsHelper
 import com.example.superchat.core.log.analytics.LocalAnalyticsHelper
-import com.example.superchat.core.network.utils.NetworkMonitor
-import com.example.superchat.core.network.utils.TimeZoneMonitor
+import com.example.superchat.core.network.monitor.NetworkMonitor
+import com.example.superchat.core.network.monitor.TimeZoneMonitor
 import com.example.superchat.core.ui.LocalTimeZone
 import com.example.superchat.ui.App
 import com.example.superchat.ui.rememberAppState
@@ -51,8 +52,6 @@ class MainActivity : ComponentActivity() {
     lateinit var analyticsHelper: AnalyticsHelper
 
     private val viewModel: MainActivityViewModel by viewModels()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -123,7 +122,11 @@ class MainActivity : ComponentActivity() {
                     androidTheme = shouldUseAndroidTheme(uiState),
                     disableDynamicTheming = shouldDisableDynamicTheming(uiState),
                 ) {
-                    App(appState)
+                    if(authenticated(uiState)){
+                        App(appState)
+                    }else{
+                        AuthScreen()
+                    }
                 }
             }
         }
@@ -183,3 +186,12 @@ private val lightScrim = android.graphics.Color.argb(0xe6, 0xFF, 0xFF, 0xFF)
  * https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/EdgeToEdge.kt;l=40-44;drc=27e7d52e8604a080133e8b842db10c89b4482598
  */
 private val darkScrim = android.graphics.Color.argb(0x80, 0x1b, 0x1b, 0x1b)
+
+
+@Composable
+private fun authenticated(
+    uiState: MainActivityUiState
+): Boolean = when(uiState){
+    Loading -> false
+    is Success -> uiState.userData.authenticated
+}
